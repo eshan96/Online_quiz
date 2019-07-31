@@ -13,20 +13,14 @@ def create
       @subject = Subject.create(
            name: params[:data][:name]
        )    
-      
-       choice = { params[:data][:content], params[:data][:value] }
-       choice.each do |q, v|
-          Question.create(content: q, clazz_id: @clazz.id, subject_id: @subject.id)   
-          v.each do |attrs|
-            Option.create(value: attrs, question_id: @question.id)
-       end
-   end
-    #    @question = Question.create(
-    #        content: params[:data][:content],
-    #        clazz_id: @clazz.id,
-    #        subject_id: @subject.id
+       
+       
+        Question.create(
+           content: params[:data][:content],
+           clazz_id: @clazz.id,
+           subject_id: @subject.id
            
-    #    )
+       )
        
        
         
@@ -35,8 +29,9 @@ def create
     #        question_id: @question.id
     #     ) 
         # value: '[1, 2, 3, 4]'
-        
-        
+         params[:data][:value].each do |attrs|
+              Option.create(value: attrs, question_id: @question.id)
+         end
     #    Rails.logger.info(@options.errors.inspect)
        
     
