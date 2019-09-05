@@ -11,29 +11,29 @@ def create
 
       
       @subject = Subject.create(
-           name: params[:data][:name]
+           name: params[:data][:name],
+           clazz_id: @clazz.id
        )    
        
-       
-        Question.create(
-           content: params[:data][:content],
+       params[:data][:content].each do |attrs|
+        q = Question.create(
+           content: attrs[:content],
            clazz_id: @clazz.id,
            subject_id: @subject.id
            
        )
        
        
-        
-    #    @options = Option.create(
-    #     value: params[:data][:value],
-    #        question_id: @question.id
-    #     ) 
-        # value: '[1, 2, 3, 4]'
-         params[:data][:value].each do |attrs|
-              Option.create(value: attrs, question_id: @question.id)
-         end
-    #    Rails.logger.info(@options.errors.inspect)
-       
+             attrs[:value].each do |qoption|
+                 Option.create(value: qoption, question_id: q.id)
+             end
+            
+             Answer.create(
+                 answer_value: attrs[:answer_value]
+             )
+            
+        end
+    # Rails.logger.info(q.errors.inspect)
     
     if @clazz
          render json: {

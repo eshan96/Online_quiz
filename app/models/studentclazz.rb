@@ -1,0 +1,2 @@
+class Studentclazz < ApplicationRecord
+end
