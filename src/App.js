@@ -5,8 +5,16 @@ import Student_Registration from './components/Student_Registration';
 import { BrowserRouter, Switch, Route, withRouter, Redirect } from 'react-router-dom'
 import Admin from './components/Admin';
 import Add_Questions from './components/Add_Questions';
-import Test from './components/Test';
+
+
+import IncorporationForm from './components/IncorporationForm';
+//import Registration from './components/Registration'
 // import PrivateRoute from './components/PrivateRoute';
+import StartTestButton from './components/StartTestButton';
+import Test from './components/Test';
+import MainPage from './components/MainPage';
+import { MainPageNew } from './components/MainPageNew';
+
 
 
 function App() {
@@ -18,14 +26,33 @@ function App() {
        <Route exact path={"/"} render= {props => (
          <Student_Registration {...props} />
        )} />
+       
+
+       <Route exact path={"/startTestButton"} render= {props => (
+         <StartTestButton {...props} />
+       )} />
+
+       <Route exact path={"/mainPage"} render= {props => (
+         <MainPage {...props} />
+       )} />
+
+       <Route exact path={"/mainPageNew"} render= {props => (
+         <MainPageNew {...props} />
+       )} />
+       
+
+        <Route exact path={"/form"} render= {props => (
+         <IncorporationForm {...props} />
+       )} />
+
+    <Route exact path={"/login"} render= {props => (
+         <Admin {...props} />
+       )} />
 
        <Route exact path={"/test"} render= {props => (
          <Test {...props} />
        )} />
-
-    <Route exact path={"/admin"} render= {props => (
-         <Admin {...props} />
-       )} />
+       
 
         <Route exact path={"/addQuestions"} render= {props => (
          <Add_Questions {...props} />
