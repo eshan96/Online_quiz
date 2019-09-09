@@ -29,7 +29,7 @@ def create
              end
             
              Answer.create(
-                 answer_value: attrs[:answer_value]
+                 answer_value: attrs[:answer_value], question_id: q.id
              )
             
         end
