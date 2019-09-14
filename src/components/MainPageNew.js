@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Questions from './Questions';
 import Pagination from './Pagination';
+import Button from 'react-bootstrap/Button';
+import ButtonToolbar from 'react-bootstrap/Button';
+import MyVerticallyCenteredModal from './MyVerticallyCenteredModal'
 
 export class MainPageNew extends Component {
 
@@ -18,7 +21,8 @@ export class MainPageNew extends Component {
             loading: false,
             currentPage: 1,
             questionsPerPage: 1,
-            selectedOption: []
+            selectedOption: [],
+            modalShow: false
         }
 
         this.handleOptionChange = this.handleOptionChange.bind(this)
@@ -43,8 +47,9 @@ export class MainPageNew extends Component {
                  count = count + 1
             }
        }
-
+      
        console.log('Your Score is', count)
+      // 
          e.preventDefault()
     }
     componentDidMount() {
@@ -77,14 +82,31 @@ export class MainPageNew extends Component {
     //change Page
 
     const paginate = pageNumber => this.setState({currentPage: pageNumber})
+
+    var count = 0
+    for(var i = 0; i < this.state.selectedOption.length; i++) {
+         if(this.state.selectedOption[i] === this.state.questions[i].answer) {           
+              count = count + 1
+         }
+    }
         return (
-            <form onSubmit={this.handleSubmit}>
+            //<form onSubmit={this.handleSubmit}>
             <div>
                 <Questions questions={currentQuestions} loading={this.state.loading} handleOptionChange={this.handleOptionChange} selectedOption={this.state.selectedOption}/>
             <Pagination questionsPerPage={this.state.questionsPerPage} totalQuestions={this.state.questions.length} paginate={paginate}/>
-              <button>Submit</button>
+            <ButtonToolbar>
+      <Button variant="primary" onClick={() => this.setState({modalShow: true})}>
+        Submit Test
+      </Button>
+
+      <MyVerticallyCenteredModal
+        count={count}
+        show={this.state.modalShow}
+        onHide={() => this.setState({modalShow: false})}
+      />
+    </ButtonToolbar>
             </div>
-            </form>
+            //</form>
         )
     }
 }
