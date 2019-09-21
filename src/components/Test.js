@@ -61,12 +61,12 @@ class Test extends Component {
           
             {this.state.questions.map(question => <div>{question.content}
                             <div className = "radio">{question.options.map(option => 
-                             <p><input type = "radio" name = "options" 
-                             value = {option.value}
+                             <label><input type = "radio" name = "options" 
+                             value = "option.value"
                              checked = {this.state.selectedOption === option.value}
                              onChange = {this.handleOptionChange}/>
                               {option.value}
-                             </p>
+                             </label>
             )}</div></div>)}
              
                     </div>

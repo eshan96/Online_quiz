@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import ButtonToolbar from 'react-bootstrap/Button';
 import MyVerticallyCenteredModal from './MyVerticallyCenteredModal'
 
-export class MainPageNew extends Component {
+export class MainPageTest extends Component {
 
     constructor(props) {
         super(props)
@@ -21,19 +21,27 @@ export class MainPageNew extends Component {
             loading: false,
             currentPage: 1,
             questionsPerPage: 1,
-            selectedOption: [],
+            answers: [],
             modalShow: false,
         }
 
         this.handleOptionChange = this.handleOptionChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.buildRadioButtons = this.buildRadioButtons.bind(this);
     }
 
 
     handleOptionChange(e) {
-        
+        const id = e.target.name
+        const answer = { id, answer: e.target.value }
+        let answers
+        if(this.state.answers.some(answer => answer.id === id)) {
+            answers = [...this.state.answers.filter(answer => answer.id !== id, answer)]
+        }else{
+            answers = [...this.state.answers, answer]
+        }
         this.setState({
-            selectedOption: [...this.state.selectedOption, e.target.value]
+            answers: answers
         })
     
         console.log('Event Selected', e)
@@ -111,4 +119,4 @@ export class MainPageNew extends Component {
     }
 }
 
-export default MainPageNew
+export default MainPageTest
