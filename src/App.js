@@ -7,7 +7,7 @@ import Admin from './components/Admin';
 import Add_Questions from './components/Add_Questions';
 
 
-import IncorporationForm from './components/IncorporationForm';
+
 //import Registration from './components/Registration'
 // import PrivateRoute from './components/PrivateRoute';
 import StartTestButton from './components/StartTestButton';
@@ -41,9 +41,7 @@ function App() {
        )} />
        
 
-        <Route exact path={"/form"} render= {props => (
-         <IncorporationForm {...props} />
-       )} />
+        
 
     <Route exact path={"/login"} render= {props => (
          <Admin {...props} />

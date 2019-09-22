@@ -5,7 +5,7 @@ class TestButton extends Component {
 
 
     onClick(e) {
-        this.props.history.push("/test")
+        this.props.history.push("/mainPageNew")
     }
 
     render() {

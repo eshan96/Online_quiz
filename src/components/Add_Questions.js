@@ -67,7 +67,7 @@ class Add_Questions extends Component {
 
                 questionss.push(question)
         }
-        axios.post("http://localhost:3002/admins", { 
+        axios.post("http://13.233.61.180:3002/admins", { 
             data:{
                 
                    clazz_name: this.state.clazz,    

@@ -16,7 +16,7 @@ class Student_Registration extends Component {
              autocompleteData: [],
              value: "",
              rollNumber: "",
-             subject: "select" 
+             subject: ""
         }
 
         this.handleChange = this.handleChange.bind(this)
@@ -32,7 +32,7 @@ class Student_Registration extends Component {
         let _this = this;
 
         // Url of your website that process the data and returns a
-        let url = `http://localhost:3002/clazz`;
+        let url = `http://13.233.61.180:3002/clazz`;
         
         // Configure a basic AJAX request to your server side API
         // that returns the data according to the sent text
@@ -103,7 +103,7 @@ class Student_Registration extends Component {
 
     handleSubmit(event) {
         console.log(this.state)
-         axios.post("http://localhost:3002/test",{
+         axios.post("http://13.233.61.180:3002/test",{
              test: {
                  student_name: this.state.name,
                  student_clazz_name: this.state.value,
@@ -138,6 +138,7 @@ class Student_Registration extends Component {
    </Form.Group> */}
    
    <Autocomplete  
+                    placeholder="Enter Class"  
                     getItemValue={this.getItemValue}
                     items={this.state.autocompleteData}
                     renderItem={this.renderItem}
@@ -159,12 +160,7 @@ class Student_Registration extends Component {
 
   <Form.Group controlId="formBasicSubject">
 
-<Form.Control as="select" name="subject" value={this.state.subject} onChange={this.handleChange}>
-  <option>Maths</option>
-  <option>Science</option>
-  <option>Social Studies</option>
-  <option>English</option>
-  <option>Computer</option>
+<Form.Control type="text" name="subject" placeholder="Enter Subject" value={this.state.subject} onChange={this.handleChange}>
 </Form.Control>
 </Form.Group>
   

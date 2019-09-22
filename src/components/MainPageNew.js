@@ -54,7 +54,7 @@ export class MainPageNew extends Component {
     }
     componentDidMount() {
         this.setState({loading: true})
-        axios.get("http://localhost:3002/test")
+        axios.get("http://13.233.61.180:3002/test")
         .then(response => {
             console.log('Response data for questions', response)
             for(var i = 0; i < response.data.length; i++){
