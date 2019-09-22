@@ -137,8 +137,7 @@ class Student_Registration extends Component {
      <Form.Control type="text" name="clazz" placeholder="Enter Class" value={this.state.clazz} onChange={this.handleChange}/>
    </Form.Group> */}
    
-   <Form.Group controlId="formBasicClass">
-   <Form.Control placeholder="Enter Class">
+   
    <Autocomplete  
                       
                     getItemValue={this.getItemValue}
@@ -148,8 +147,7 @@ class Student_Registration extends Component {
                     onChange={this.onChange}
                     onSelect={this.onSelect}
                 />
-</Form.Control>
-</Form.Group>
+
 
    {/* <div>
                 <input onChange={this.onTextChanged} type = "text" />
